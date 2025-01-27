@@ -14,9 +14,6 @@ jobs:
       - name: Check out the code
         uses: actions/checkout@v2
 
-      - name: Ensure gradlew is executable
-        run: chmod +x gradlew
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
@@ -62,7 +59,5 @@ jobs:
               -e SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }} \
               -e SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }} \
               -e PORT=${{ secrets.PORT }} \
-              -e APP_KEY=${{secrets.APP_KEY}}\
-              -e APP_SECRET=${{secrets.APP_SECRET}}\
               -p 8080:8080 \
               ${{ secrets.APP_IMAGE }}
